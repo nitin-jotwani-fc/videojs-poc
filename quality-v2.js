@@ -326,6 +326,7 @@
           var l = function () {};
           e.ready((function ()
           {
+            console.log('quality-v2 ready')
             l = b(e, t), e.on("loadstart", (function ()
             {
               l(), l = b(e, t)
