@@ -84,8 +84,10 @@
         }), t
       }, u.getQualityLevelById = function (e)
       {
+        console.log('getQualityLevelById outside loop', e)
         for (var t = 0, l = this.length; t < l; t++)
         {
+          console.log('getQualityLevelById inside loop:', this[t])
           var i = this[t];
           if (i.id === e) return i
         }
@@ -237,6 +239,7 @@
         return this.autoMenuItem_ = i, l.push(i), l
       }, l.groupByResolution_ = function ()
       {
+        console.log('groupByResolution_')
         for (var e = {}, t = [], l = 0, i = this.qualityLevels_.length; l < i; l++)
         {
           var n = this.qualityLevels_[l],
@@ -292,6 +295,7 @@
         return e[0].levels.length && e[1].levels.length ? e : []
       }, l.handleQualityChange_ = function ()
       {
+        console.log('handleQualityChange_ qualityLevels_:', this.qualityLevels_)
         var e = this.qualityLevels_[this.qualityLevels_.selectedIndex],
           t = this.options_.useResolutionLabels && y(this.qualityLevels_),
           l = "";
