@@ -16,8 +16,6 @@
     "start:debug": "npm run build:dev:server && node --inspect server-build/main.js",
     "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true npm run server",
     "start:production": "npm run test && npm run build && npm run start:prod",
-    "start:stag": "npm run build:stag && cross-env NODE_ENV=staging npm run server",
-    "start:prod": "npm run build:prod && cross-env NODE_ENV=production npm run server",
     "proxy": "node server/main.js",
     "gql:update": "src/scripts/update-schema.js",
     "gql:compile": "src/scripts/gql-2-ts.js src",
