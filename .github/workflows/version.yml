@@ -3,7 +3,6 @@ name: Bump Version
   pull_request:
     branches:
       - master
-    types: [opened]
 jobs:
   bump-version:
     name: Bump Version on master
@@ -11,17 +10,13 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
       - name: Automated Version Bump
         id: version-bump
         uses: phips28/gh-action-bump-version@master
         with:
-          minor-wording: 'feat, perf'
-          major-wording: 'build, major'
-          skip-tag: false
+          minor-wording: 'feat,perf'
+          major-wording: 'build,major'
+          skip-tag: 'true'
           default: patch
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
