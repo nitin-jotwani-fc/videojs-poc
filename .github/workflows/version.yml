@@ -1,11 +1,11 @@
-name: Bump Version
+name: Automated Version Bump
 'on':
   pull_request:
     branches:
       - master
 jobs:
   bump-version:
-    name: Bump Version on master
+    name: Update package.json
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
@@ -18,7 +18,7 @@ jobs:
           major-wording: 'build,major'
           skip-tag: 'true'
           default: patch
-          commit-message: 'CI: package.json version auto incremented to {{version}} [skip ci]'
+          commit-message: 'CI: package.json version auto updated to {{version}}'
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       - name: Output Step
