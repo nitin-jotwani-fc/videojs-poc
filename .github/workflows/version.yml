@@ -24,7 +24,7 @@ jobs:
           skip-tag: false
           default: patch
         env:
-          GITHUB_TOKEN: ${{ secrets.ACTION_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Output Step
         env:
