@@ -3,6 +3,8 @@ name: Bump Version
   push:
     branches:
       - master
+    paths-ignore:
+      - 'package.json'
 jobs:
   bump-version:
     name: Bump Version on master
