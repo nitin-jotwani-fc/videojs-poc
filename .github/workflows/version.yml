@@ -3,7 +3,7 @@ name: Bump Version
   pull_request:
     branches:
       - master
-    types: [created]
+    types: [opened]
 jobs:
   bump-version:
     name: Bump Version on master
