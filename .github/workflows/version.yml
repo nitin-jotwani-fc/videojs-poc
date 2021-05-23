@@ -1,8 +1,9 @@
 name: Automated Version Bump
-'on':
+on:
   pull_request:
     branches:
       - master
+    types: [opened]
 jobs:
   bump-version:
     name: Update package.json
@@ -24,3 +25,4 @@ jobs:
       - name: Output Step
         env:
           NEW_TAG: '${{ steps.version-bump.outputs.newTag }}'
+        run: echo "new tag $NEW_TAG"
