@@ -1,5 +1,5 @@
 name: Automated Version Bump
-'on':
+on:
   pull_request:
     branches:
       - master
@@ -18,9 +18,10 @@ jobs:
           major-wording: 'build,major'
           skip-tag: 'true'
           default: patch
-          commit-message: 'CI: package.json version updated to {{version}}'
+          commit-message: 'CI: package.json version auto updated to {{version}}'
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       - name: Output Step
         env:
           NEW_TAG: '${{ steps.version-bump.outputs.newTag }}'
+        run: echo "new tag $NEW_TAG"
