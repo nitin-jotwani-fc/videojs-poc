@@ -1,37 +1,26 @@
-name: "Bump Version"
-
-on:
-  push:
+name: Automated Version Bump
+'on':
+  pull_request:
     branches:
-      - "master"
-
+      - master
 jobs:
   bump-version:
-    name: "Bump Version on master"
+    name: Update package.json
     runs-on: ubuntu-latest
-
     steps:
-      - name: "Checkout source code"
-        uses: "actions/checkout@v2"
-        with:
-          ref: ${{ github.ref }}
-          token: ${{ secrets.ACTION_GITHUB_TOKEN }}
-      - name: "cat package.json"
-        run: cat ./package.json
-      - name: "Setup Node.js"
-        uses: "actions/setup-node@v1"
-        with:
-          node-version: 12
-      - name: "Automated Version Bump"
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Automated Version Bump
         id: version-bump
-        uses: "phips28/gh-action-bump-version@master"
+        uses: phips28/gh-action-bump-version@master
         with:
-          tag-prefix: 'v'
+          minor-wording: 'feat,perf'
+          major-wording: 'build,major'
+          skip-tag: 'true'
+          default: patch
+          commit-message: 'CI: package.json version updated to {{version}}'
         env:
-          GITHUB_TOKEN: ${{ secrets.ACTION_GITHUB_TOKEN }}
-      - name: "cat package.json"
-        run: cat ./package.json
-      - name:  'Output Step'
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+      - name: Output Step
         env:
-          NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
-        run: echo "new tag $NEW_TAG"
+          NEW_TAG: '${{ steps.version-bump.outputs.newTag }}'
