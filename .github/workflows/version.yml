@@ -1,30 +1,27 @@
-name: Bump Version
+name: Automated Version Bump
 'on':
-  pull_request:
+  push:
     branches:
       - master
-    types: [opened]
+    paths-ignore:
+      - 'package.json'
 jobs:
   bump-version:
-    name: Bump Version on master
+    name: Update package.json
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
         with:
-          node-version: 12
+          token: ${{ secrets.NITIN_TOKEN }}
       - name: Automated Version Bump
         id: version-bump
         uses: phips28/gh-action-bump-version@master
         with:
-          minor-wording: 'feat, perf'
-          major-wording: 'build, major'
-          skip-tag: false
-          default: patch
+          skip-tag: 'true'
+          commit-message: 'CI: package.json version auto updated to {{version}}'
         env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          GITHUB_TOKEN: '${{ secrets.NITIN_TOKEN }}'
       - name: Output Step
         env:
           NEW_TAG: '${{ steps.version-bump.outputs.newTag }}'
