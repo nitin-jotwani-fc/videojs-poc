@@ -23,7 +23,7 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
         with:  
-          token: ${{ secrets.NITIN_TOKEN }}
+          token: ${{ secrets.NITIN_TOKEN_2 }}
       
       - name: Increase version number
         uses: phips28/gh-action-bump-version@v8.0.12
