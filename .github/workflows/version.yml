@@ -1,8 +1,10 @@
 name: Automated Version Bump
 'on':
-  pull_request:
+  push:
     branches:
       - master
+    paths-ignore:
+      - 'package.json'
 jobs:
   bump-version:
     name: Update package.json
@@ -10,6 +12,8 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.NITIN_TOKEN }}
       - name: Automated Version Bump
         id: version-bump
         uses: phips28/gh-action-bump-version@master
@@ -17,7 +21,7 @@ jobs:
           skip-tag: 'true'
           commit-message: 'CI: package.json version auto updated to {{version}}'
         env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          GITHUB_TOKEN: '${{ secrets.NITIN_TOKEN }}'
       - name: Output Step
         env:
           NEW_TAG: '${{ steps.version-bump.outputs.newTag }}'
