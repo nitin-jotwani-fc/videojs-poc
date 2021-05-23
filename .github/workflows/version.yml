@@ -17,7 +17,6 @@ jobs:
           minor-wording: 'feat,perf'
           major-wording: 'build,major'
           skip-tag: 'true'
-          default: patch
           commit-message: 'CI: package.json version auto updated to {{version}}'
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
