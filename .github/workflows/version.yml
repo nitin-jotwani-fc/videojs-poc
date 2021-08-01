@@ -20,6 +20,7 @@ jobs:
           skip-tag: 'true'
           default: patch
           commit-message: 'CI: package.json version updated to {{version}}'
+          token: '${{ secrets.GITHUB_TOKEN }}'
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       - name: Output Step
