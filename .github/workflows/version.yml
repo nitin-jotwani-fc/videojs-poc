@@ -12,7 +12,7 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ACTION_GITHUB_TOKEN_2 }}
       - name: Automated Version Bump
         id: version-bump
         uses: phips28/gh-action-bump-version@master
@@ -23,7 +23,7 @@ jobs:
           default: patch
           commit-message: 'CI: package.json version updated to {{version}}'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTION_GITHUB_TOKEN_2 }}
       - name: Output Step
         env:
           NEW_TAG: '${{ steps.version-bump.outputs.newTag }}'
